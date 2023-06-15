@@ -74,7 +74,7 @@ function wavePost(post: PostView["post"])
 		const flagwave_url = 'https://krikienoid.github.io/flagwaver/#?src=' + encodeURIComponent(url);
 		body = "Here you go: [Link](" + flagwave_url + ")\n\n*****\n\nBeep Boop I'm a bot. Maintained by Thomas Douwes  \nDid I get something wrong? if so please message [@thomas@lemmy.douwes.co.uk](/u/thomas@lemmy.douwes.co.uk)";
 	}
-	//multiply links
+	//multiple links
 	else if (matches.length > 1)
 	{
 		body = "Here you go:  \n"
@@ -120,7 +120,7 @@ function waveComment(comment: CommentView["comment"])
 		const flagwave_url = 'https://krikienoid.github.io/flagwaver/#?src=' + encodeURIComponent(url);
 		body = "Here you go: [Link](" + flagwave_url + ")\n\n*****\n\nBeep Boop I'm a bot. Maintained by Thomas Douwes  \nDid I get something wrong? if so please message [@thomas@lemmy.douwes.co.uk](/u/thomas@lemmy.douwes.co.uk)";
 	}
-	//multiply links
+	//multiple links
 	else if (matches.length > 1)
 	{
 		body = "Here you go:  \n"
