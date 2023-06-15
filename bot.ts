@@ -80,7 +80,7 @@ function wavePost(post: PostView["post"])
 		body = "Here you go:  \n"
 		var iter = 1;
 		matches.forEach( (link) => {
-			const url = 'https://corsproxy.io/?' + encodeURIComponent(link);
+			const url = cors_proxy + encodeURIComponent(link);
 			const flagwave_url = 'https://krikienoid.github.io/flagwaver/#?src=' + encodeURIComponent(url);
 			body += "[Link " + iter + "](" + flagwave_url + ")  \n";
 			iter++;
@@ -126,7 +126,7 @@ function waveComment(comment: CommentView["comment"])
 		body = "Here you go:  \n"
 		var iter = 1;
 		matches.forEach( (link) => {
-			const url = 'https://corsproxy.io/?' + encodeURIComponent(link);
+			const url = cors_proxy + encodeURIComponent(link);
 			const flagwave_url = 'https://krikienoid.github.io/flagwaver/#?src=' + encodeURIComponent(url);
 			body += "[Link " + iter + "](" + flagwave_url + ")  \n";
 			iter++;
