@@ -181,36 +181,28 @@ const bot = new LemmyBot({
 			botActions: { createComment, getUserId, getParentOfComment, getCommunityId, getPost },
 			preventReprocess
 		}) {
-			//get the user ID of the bot so it dosn't reply to itself
-			const bot_id = await getUserId(USERNAME_OR_EMAIL);
-			if (comment.creator_id != bot_id && bot_id !== undefined) {
-				if (reply_regex.test(comment.content)) {
-					console.log("comment matched RegEx, responding");
-					const { type, data } = await getParentOfComment(comment);
-					if (type === 'post')
-					{
-						const { post } = data as PostView;
-						var body = wavePost(post);
-					}
-					else if (type === 'comment')
-					{
-						const { comment } = data as CommentView;
-						var body = waveComment(comment);
-					}
-					else
-					{
-						var body = "I don't know how to reply to this type of post";
-					}
-					createComment({
-						postId: comment.post_id,
-						parentId: comment.id,
-						content: body
-					});
-					preventReprocess();
+			if (reply_regex.test(comment.content)) {
+				console.log("comment matched RegEx, responding");
+				const { type, data } = await getParentOfComment(comment);
+				if (type === 'post')
+				{
+					const { post } = data as PostView;
+					var body = wavePost(post);
 				}
-			}
-			else
-			{
+				else if (type === 'comment')
+				{
+					const { comment } = data as CommentView;
+					var body = waveComment(comment);
+				}
+				else
+				{
+					var body = "I don't know how to reply to this type of post";
+				}
+				createComment({
+					postId: comment.post_id,
+					parentId: comment.id,
+					content: body
+				});
 				preventReprocess();
 			}
 		},
@@ -219,14 +211,14 @@ const bot = new LemmyBot({
 			botActions: { createComment, getUserId, getCommunityId },
 			preventReprocess
 		}) {
-				if (reply_regex.test(post.body!) || reply_regex.test(post.name)) {
-					console.log("post matched RegEx, responding")
-					var body = wavePost(post);
-				}
-				else
-				{
-					preventReprocess();
-				}
+			if (reply_regex.test(post.body!) || reply_regex.test(post.name)) {
+				console.log("post matched RegEx, responding")
+				var body = wavePost(post);
+			}
+			else
+			{
+				preventReprocess();
+			}
 		},
 		async mention ({
 			mentionView: { comment },
