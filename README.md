@@ -20,7 +20,7 @@ docker build . -t thomas/node-runner
 
 Install NPM dependencies:  
 ```
-docker run -it --rm --name=lemmy-flagwaver-bot -v /path/to/lemmy-flagwaver-bot:/app/bot thomas/node-runner npm install
+docker run -it --rm --name=lemmy-flagwaver-bot -v /path/to/lemmy-flagwaver-bot:/app thomas/node-runner npm install
 ```
 
 copy .env.example to .env  
@@ -34,7 +34,7 @@ The configuration of what communities to use is a little more complex due to a l
 
 run:  
 ```
-docker run -d --name=lemmy-flagwaver-bot -v /path/to/lemmy-flagwaver-bot:/usr/src/bot thomas/node-runner
+docker run -d --name=lemmy-flagwaver-bot -v /path/to/lemmy-flagwaver-bot:/app thomas/node-runner
 ```
 
 I know this is not a good way to use docker.
