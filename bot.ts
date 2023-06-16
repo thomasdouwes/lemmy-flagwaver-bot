@@ -18,9 +18,9 @@ const reply_regex = /!(wave)/i
 const cors_proxy = 'https://corsproxy.io/?'
 
 //community config
-let vexillology: SearchOptions = {instance: 'lemmy.world', name: 'vexillology'};
-let vexillologycirclejerk: SearchOptions = {instance: 'lemmy.antemeridiem.xyz', name: 'vexillologyjerk'};
-let testcommunity: string = "test";
+//let vexillology: SearchOptions = {instance: 'lemmy.world', name: 'vexillology'};
+//let vexillologycirclejerk: SearchOptions = {instance: 'lemmy.antemeridiem.xyz', name: 'vexillologyjerk'};
+//let testcommunity: string = "test";
 
 //very ugly .env checking
 console.log("Running bot with variables:");
@@ -158,20 +158,22 @@ const bot = new LemmyBot({
 		minutesUntilReprocess: 10,
 		secondsBetweenPolls: 10
 	},
-	federation: 'all',
-	//federation: {
-	//  allowList: [
-	//    {
-	//	  instance: 'lemmy.world',
-	//	  communities: ['vexillology']
-	//    },
-	//    {
-	//	  instance: 'lemmy.antemeridiem.xyz',
-	//	  communities: ['vexillologyjerk']
-	//    }
-	//  ]
-	//},
-	//federation: 'local',
+	federation: {
+		allowList: [
+			{
+				instance: 'lemmy.world',
+				communities: ['vexillology']
+			},
+			{
+				instance: 'lemmy.antemeridiem.xyz',
+				communities: ['vexillologyjerk']
+			},
+			{
+				instance: 'lemmy.douwes.co.uk',
+				communities: ['test']
+			}
+		]
+	},
 	dbFile: 'db.sqlite3',
 	handlers: {
 		async comment ({
@@ -181,37 +183,29 @@ const bot = new LemmyBot({
 		}) {
 			//get the user ID of the bot so it dosn't reply to itself
 			const bot_id = await getUserId(USERNAME_OR_EMAIL);
-			let communities: Array<number> = [await getCommunityId(vexillology) as number, await getCommunityId(vexillologycirclejerk) as number, await getCommunityId(testcommunity) as number];
-			if (communities.includes((await getPost(comment.post_id)).community.id))
-			{
-				if (comment.creator_id != bot_id && bot_id !== undefined) {
-					if (reply_regex.test(comment.content)) {
-						console.log("comment matched RegEx, responding");
-						const { type, data } = await getParentOfComment(comment);
-						if (type === 'post')
-						{
-							const { post } = data as PostView;
-							var body = wavePost(post);
-						}
-						else if (type === 'comment')
-						{
-							const { comment } = data as CommentView;
-							var body = waveComment(comment);
-						}
-						else
-						{
-							var body = "I don't know how to reply to this type of post";
-						}
-						createComment({
-							postId: comment.post_id,
-							parentId: comment.id,
-							content: body
-						});
-						preventReprocess();
+			if (comment.creator_id != bot_id && bot_id !== undefined) {
+				if (reply_regex.test(comment.content)) {
+					console.log("comment matched RegEx, responding");
+					const { type, data } = await getParentOfComment(comment);
+					if (type === 'post')
+					{
+						const { post } = data as PostView;
+						var body = wavePost(post);
 					}
-				}
-				else
-				{
+					else if (type === 'comment')
+					{
+						const { comment } = data as CommentView;
+						var body = waveComment(comment);
+					}
+					else
+					{
+						var body = "I don't know how to reply to this type of post";
+					}
+					createComment({
+						postId: comment.post_id,
+						parentId: comment.id,
+						content: body
+					});
 					preventReprocess();
 				}
 			}
@@ -225,9 +219,6 @@ const bot = new LemmyBot({
 			botActions: { createComment, getUserId, getCommunityId },
 			preventReprocess
 		}) {
-			let communities: Array<number> = [await getCommunityId(vexillology) as number, await getCommunityId(vexillologycirclejerk) as number, await getCommunityId(testcommunity) as number];
-			if (communities.includes(post.community_id))
-			{
 				if (reply_regex.test(post.body!) || reply_regex.test(post.name)) {
 					console.log("post matched RegEx, responding")
 					var body = wavePost(post);
@@ -236,7 +227,6 @@ const bot = new LemmyBot({
 				{
 					preventReprocess();
 				}
-			}
 		},
 		async mention ({
 			mentionView: { comment },
