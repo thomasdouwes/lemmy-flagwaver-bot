@@ -6,7 +6,7 @@ const { INSTANCE, USERNAME_OR_EMAIL, PASSWORD } =
   process.env as Record<string, string>;
 
 //unholy RegEx for matching URL with image as the resource while seperated by space or newline or in markdown link EG [link1.com](link2.com) and only link2.com is matched
-const file_regex = /(?<=^| |\()https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\/\b(?:[-a-zA-Z0-9()@:%_\+~#?&\/=]*)[-a-zA-Z0-9@:%_\+~#=.]*\.(png|jpg|jpeg|gif|webp|mp4)(?=$| |\))/gim;
+const file_regex = /(?<=^| |\()https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\/\b(?:[-a-zA-Z0-9()@:%_\+~#?&\/=.]*)[-a-zA-Z0-9@:%_\+~#=]*\.(png|jpg|jpeg|gif|webp|mp4)(?=$| |\))/gim;
 
 //RegEx for checking for imgur URL after not finding image URL
 const imgur_regex = /^https?:\/\/(\w+\.)?imgur.com\/(\w*\d\w*)+(\.[a-zA-Z]{3})?$/;
