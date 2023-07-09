@@ -6,7 +6,7 @@ This project uses the [lemmy-bot](https://github.com/SleeplessOne1917/lemmy-bot)
 
 # How to use
 ## NOTE
-Because the instance the main version of this bot is running on can't be upgraded from 0.17.4 this library is using an old version of the lemmy-bot library. This older version requires 0.17.4 and will reply to all comments on older versions. If you are using >=0.18.0 then there is an untested 0.18.0 branch.  
+Because the instance the main version of this bot is running on can't be upgraded from 0.17.4 this bot is using an old version of the lemmy-bot library. This older version requires 0.17.4 and will reply to all comments on older versions. If you are using >=0.18.0 then there is an untested 0.18.0 branch.
 
 ## docker install
 Super janky right now  
