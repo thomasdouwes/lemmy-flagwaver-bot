@@ -169,8 +169,8 @@ const bot = new LemmyBot({
 				communities: ['vexillologyjerk']
 			},
 			{
-				instance: 'lemmy.douwes.co.uk',
-				communities: ['test']
+				instance: 'sopuli.xyz',
+				communities: ['test_community']
 			}
 		]
 	},
