@@ -29,7 +29,7 @@ cp .env.example .env
 
 change the variables in .env to the ones for your bot user.
 
-The configuration of what communities to use is a little more complex due to a library bug. You need to edit some variables need the top of bot.ts
+The configuration of what communities to use is a little more complex, You need to edit the federation section in bot.ts
 
 run:  
 ```
@@ -53,7 +53,7 @@ cp .env.example .env
 
 change the variables in .env to the ones for your bot user.
 
-The configuration of what communities to use is a little more complex due to a library bug. You need to edit some variables need the top of bot.ts
+The configuration of what communities to use is a little more complex, You need to edit the federation section in bot.ts
 
 run:  
 ```
