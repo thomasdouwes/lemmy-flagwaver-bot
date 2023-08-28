@@ -17,6 +17,12 @@ const reply_regex = /!(wave)/i
 //URL for CORS proxy //TODO change it!
 const cors_proxy = 'https://corsproxy.io/?'
 
+//Lemmy account to link in response
+const contact_link = '[@thomasdouwes@sopuli.xyz](/u/thomasdouwes@sopuli.xyz)'
+
+//bot maintainer
+const maintainer = 'Thomas Douwes'
+
 //community config
 //let vexillology: SearchOptions = {instance: 'lemmy.world', name: 'vexillology'};
 //let vexillologycirclejerk: SearchOptions = {instance: 'lemmy.antemeridiem.xyz', name: 'vexillologyjerk'};
@@ -72,7 +78,7 @@ function wavePost(post: PostView["post"])
 	{
 		const url = cors_proxy + encodeURIComponent(matches[0]);
 		const flagwave_url = 'https://krikienoid.github.io/flagwaver/#?src=' + encodeURIComponent(url);
-		body = "Here you go: [Link](" + flagwave_url + ")\n\n*****\n\nBeep Boop I'm a bot. Maintained by Thomas Douwes  \nDid I get something wrong? if so please message [@thomas@lemmy.douwes.co.uk](/u/thomas@lemmy.douwes.co.uk)";
+		body = "Here you go: [Link](" + flagwave_url + ")\n\n*****\n\nBeep Boop I'm a bot. Maintained by " + maintainer + "  \nDid I get something wrong? if so please message " + contact_link;
 	}
 	//multiple links
 	else if (matches.length > 1)
@@ -85,7 +91,7 @@ function wavePost(post: PostView["post"])
 			body += "[Link " + iter + "](" + flagwave_url + ")  \n";
 			iter++;
 		});
-		body += "\n*****\n\nBeep Boop I'm a bot. Maintained by Thomas Douwes  \nDid I get something wrong? if so please message [@thomas@lemmy.douwes.co.uk](/u/thomas@lemmy.douwes.co.uk)";
+		body += "\n*****\n\nBeep Boop I'm a bot. Maintained by " + maintainer + "  \nDid I get something wrong? if so please message " + contact_link;
 	}
 	//no links
 	else
@@ -96,7 +102,7 @@ function wavePost(post: PostView["post"])
 		}
 		else
 		{
-			body = "Sorry! the post does not seem to have image!  \nIf that is incorrect please message [@thomas@lemmy.douwes.co.uk](/u/thomas@lemmy.douwes.co.uk)";
+			body = "Sorry! the post does not seem to have image!  \nIf that is incorrect please message " + contact_link;
 		}
 	}
 	return body;
@@ -118,7 +124,7 @@ function waveComment(comment: CommentView["comment"])
 	{
 		const url = cors_proxy + encodeURIComponent(matches[0]);
 		const flagwave_url = 'https://krikienoid.github.io/flagwaver/#?src=' + encodeURIComponent(url);
-		body = "Here you go: [Link](" + flagwave_url + ")\n\n*****\n\nBeep Boop I'm a bot. Maintained by Thomas Douwes  \nDid I get something wrong? if so please message [@thomas@lemmy.douwes.co.uk](/u/thomas@lemmy.douwes.co.uk)";
+		body = "Here you go: [Link](" + flagwave_url + ")\n\n*****\n\nBeep Boop I'm a bot. Maintained by " + maintainer + "  \nDid I get something wrong? if so please message " + contact_link;
 	}
 	//multiple links
 	else if (matches.length > 1)
@@ -131,7 +137,7 @@ function waveComment(comment: CommentView["comment"])
 			body += "[Link " + iter + "](" + flagwave_url + ")  \n";
 			iter++;
 		});
-		body += "\n*****\n\nBeep Boop I'm a bot. Maintained by Thomas Douwes  \nDid I get something wrong? if so please message [@thomas@lemmy.douwes.co.uk](/u/thomas@lemmy.douwes.co.uk)";
+		body += "\n*****\n\nBeep Boop I'm a bot. Maintained by " + maintainer + "  \nDid I get something wrong? if so please message " + contact_link;
 	}
 	//no links
 	else
@@ -142,7 +148,7 @@ function waveComment(comment: CommentView["comment"])
 		}
 		else
 		{
-			body = "Sorry! the comment does not seem to have image!  \nIf that is incorrect please message [@thomas@lemmy.douwes.co.uk](/u/thomas@lemmy.douwes.co.uk)";
+			body = "Sorry! the comment does not seem to have image!  \nIf that is incorrect please message " + contact_link;
 		}
 	}
 	return body;
