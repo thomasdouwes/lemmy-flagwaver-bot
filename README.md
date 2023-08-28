@@ -33,7 +33,7 @@ The configuration of what communities to use is a little more complex, You need 
 
 run:  
 ```
-docker run -d --name=lemmy-flagwaver-bot -v /path/to/lemmy-flagwaver-bot:/app thomas/node-runner
+docker run -d --restart=unless-stopped --name=lemmy-flagwaver-bot -v /path/to/lemmy-flagwaver-bot:/app thomas/node-runner
 ```
 
 I know this is not a good way to use docker.
