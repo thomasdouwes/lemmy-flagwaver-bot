@@ -199,8 +199,8 @@ const bot = new LemmyBot({
 					var body = "I don't know how to reply to this type of post";
 				}
 				createComment({
-					postId: comment.post_id,
-					parentId: comment.id,
+					post_id: comment.post_id,
+					parent_id: comment.id,
 					content: body
 				});
 				preventReprocess();
@@ -245,8 +245,8 @@ const bot = new LemmyBot({
 					var body = "I don't know how to reply to this type of post";
 				}
 				createComment({
-					postId: comment.post_id,
-					parentId: comment.id,
+					post_id: comment.post_id,
+					parent_id: comment.id,
 					content: body
 				});
 				preventReprocess();
