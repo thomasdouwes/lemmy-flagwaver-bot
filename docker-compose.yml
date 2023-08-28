@@ -1,0 +1,6 @@
+bot:
+  image: thomas/node-runner
+  container_name: lemmy-flagwaver-bot
+  restart: unless-stopped
+  volumes:
+    - .:/app
