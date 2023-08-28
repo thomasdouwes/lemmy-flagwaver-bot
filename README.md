@@ -4,6 +4,8 @@ A lemmy bot to wave flags
 
 This project uses the [lemmy-bot](https://github.com/SleeplessOne1917/lemmy-bot) library
 
+This repo is push mirrored to github from [forgejo.douwes.co.uk/thomas/lemmy-flagwaver-bot](https://forgejo.douwes.co.uk/thomas/lemmy-flagwaver-bot)
+
 # How to use
 ## docker install
 Super janky right now  
