@@ -180,7 +180,7 @@ const bot = new LemmyBot({
 			}
 		]
 	},
-	dbFile: 'db.sqlite3',
+	dbFile: '/data/db.sqlite3',
 	handlers: {
 		async comment ({
 			commentView: { comment },

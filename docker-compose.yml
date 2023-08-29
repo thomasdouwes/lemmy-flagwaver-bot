@@ -1,6 +1,7 @@
 bot:
-  image: thomas/node-runner
+  image: thomas/lemmy-flagwaver-bot
   container_name: lemmy-flagwaver-bot
   restart: unless-stopped
   volumes:
-    - .:/app
+    - ./data:/data
+    - ./.env:/usr/src/app/.env
