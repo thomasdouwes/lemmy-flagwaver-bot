@@ -8,37 +8,38 @@ This repo is push mirrored to github from [forgejo.douwes.co.uk/thomas/lemmy-fla
 
 # How to use
 ## docker install
-Super janky right now  
-
-enter project dir.
-
-Build generic node runner using Dockerfile  
+make base directory for bot:  
 ```
-docker build . -t thomas/node-runner
-```
+mkdir lemmy-flagwaver-bot
+cd lemmy-flagwaver-bot
+``` 
 
-Install NPM dependencies:  
+Clone repo:  
 ```
-docker run -it --rm --name=lemmy-flagwaver-bot -v /path/to/lemmy-flagwaver-bot:/app thomas/node-runner npm install
+git clone https://forgejo.douwes.co.uk/thomas/lemmy-flagwaver-bot.git
 ```
 
-copy .env.example to .env  
+copy docker-compose.yml and .env to directory:  
 ```
-cp .env.example .env
+cp lemmy-flagwaver-bot/docker-compose.yml .
+cp lemmy-flagwaver-bot/.env.example .env
+```  
+
+change the variables in .env to the ones for your bot user.  
+
+Build docker image:  
+```
+docker build . -t thomas/lemmy-flagwaver-bot
 ```
 
-change the variables in .env to the ones for your bot user.
+Run:  
+```
+docker-compose up -d
+```
 
 The configuration of what communities to use is a little more complex, You need to edit the federation section in bot.ts
 
-run:  
-```
-docker run -d --restart=unless-stopped --name=lemmy-flagwaver-bot -v /path/to/lemmy-flagwaver-bot:/app thomas/node-runner
-```
-
-I know this is not a good way to use docker.
-
-## manual install
+## manual install (not working right now)
 enter project dir.
 
 install NPM dependencies:
