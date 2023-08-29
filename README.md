@@ -32,6 +32,11 @@ Build docker image:
 docker build . -t thomas/lemmy-flagwaver-bot
 ```
 
+Make data directory:  
+```
+mkdir data
+```
+
 Run:  
 ```
 docker-compose up -d
