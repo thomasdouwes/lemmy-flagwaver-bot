@@ -29,7 +29,7 @@ change the variables in .env to the ones for your bot user.
 
 Build docker image:  
 ```
-docker build . -t thomas/lemmy-flagwaver-bot
+docker build lemmy-flagwaver-bot -t thomas/lemmy-flagwaver-bot
 ```
 
 Make data directory:  
